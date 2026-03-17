@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Upload | Professional Career</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="formCard">
+            <h1>Upload your CV here</h1>
+            
+            <div class="upload-section">
+                <input type="file" id="cvInput" accept=".pdf,.doc,.docx" hidden>
+                <button type="button" class="upload-btn" id="uploadBtn">
+                    Uplode CV <span class="plus">+</span>
+                </button>
+                
+                <div class="file-display" id="fileDisplay" style="display: none;">
+                    <div class="file-item">
+                        <button class="remove-btn" id="removeFile">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                        <span class="file-name" id="fileName">screencapture-fiverr-inbox-ts...</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" id="submitBtn">Send</button>
+        </div>
+
+        <div class="card" id="thankYouCard" style="display: none;">
+            <div class="success-icon">✓</div>
+            <h1>Thank you!</h1>
+            <p>Your CV has been successfully uploaded and sent.</p>
+            <button class="reset-btn" onclick="location.reload()">Upload another</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

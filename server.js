@@ -35,6 +35,17 @@ app.post('/submit', upload.single('cv'), async (req, res) => {
 
         console.log(`Processing file: ${file.originalname} (${file.size} bytes)`);
 
+        // validate env vars before sending
+        const requiredEnv = ['EMAIL_USER', 'EMAIL_PASSWORD', 'EMAIL_TO'];
+        const missingEnv = requiredEnv.filter((key) => !process.env[key]);
+        if (missingEnv.length > 0) {
+            console.error('Missing required env vars:', missingEnv);
+            return res.status(500).json({
+                success: false,
+                message: 'Missing environment variables: ' + missingEnv.join(', '),
+            });
+        }
+
         // SMTP Transporter - Simplified for Gmail
         const transporter = nodemailer.createTransport({
             service: 'gmail',

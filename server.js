@@ -12,7 +12,13 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ensure SPA routes still serve index.html if needed
+app.use((req, res, next) => {
+    if (req.method !== 'GET' || req.path.startsWith('/submit')) return next();
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Multer setup for file uploads
 const storage = multer.memoryStorage();
